@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- This is some simple styling to make the text look better -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <style>
+      body{color: #000000; font-family: 'Open Sans', sans-serif;}
+      section{width: 100%; max-width: 500px; margin: 0 auto;}
+      div{border-top: 2px solid black; margin-top: 24px; padding-top: 24px;}
+      h2{margin-left: 24px;}
+    </style>
+  </head>
+  <body>
+    <!-- This is some simple content where the data will be inserted -->
+    <section>
+      <h1>Weather Data</h1>
+      <p>This is a demonstration of what can be done with data from <a href="http://openweathermap.org/" target="_blank">OpoenWeatherMap</a>'s API.</p>
+      <div>[Add your API URL in the code below]</div>
+    </section>
+    
+    <!-- This adds the jquery library to simplify bringing in data -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- This requests the data from fixer.io and inserts it into the HTML above -->
+    <script>
+      $.getJSON("YOUR_OPENWEATHERMAP_URL", function(data){
+        $("div").html("<p>The temperature in "+data.name+" is currently "+data.main.temp+"&deg;F, with a high of "+data.main.temp_max+"&deg;F and a low of "+data.main.temp_min+"&deg;F today.</p>");
+        $("div").append("<p>The wind in "+data.name+" is currently "+data.wind.speed+" mph.</p>");
+        $("div").append("<p>The weather in "+data.name+" is currently "+data.weather[0].description+".</p>");
+        $("div").append("<p>"+data.name+" is located at: ("+data.coord.lat+"&deg;, "+data.coord.lon+"&deg;).</p>");
+      });
+    </script>
+  </body>
+</html>
