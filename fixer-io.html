@@ -23,7 +23,7 @@
     <!-- This requests the data from fixer.io and inserts it into the HTML above -->
     <script>
       $.getJSON("YOUR_FIXER.IO_URL", function(data){
-        $("div").html("On " + data.date + ", the exchange rate is:<h2>1 " + data.base + " : " + data.rates.USD.toFixed(2) + " USD</h2>");
+        $("div").html("On " + data.date + ", the exchange rate is:<h2>1 " + data.base + " : " + data.rates[Object.keys(data.rates)[0]].toFixed(2) + " "+Object.keys(data.rates)[0]+"</h2>");
       });
     </script>
   </body>
